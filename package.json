@@ -5,23 +5,32 @@
   "type": "module",
   "files": [
     "dist",
-    "index.d.ts"
+    "vite.d.ts",
+    "webpack.d.ts"
   ],
-  "main": "./dist/counter.umd.cjs",
-  "module": "./dist/counter.js",
-  "types": "./index.d.ts",
   "exports": {
-    "types": "./index.d.ts",
-    "import": "./dist/counter.js",
-    "require": "./dist/counter.umd.cjs"
+    "./vite": {
+      "types": "./vite.d.ts",
+      "import": "./dist/vite.js",
+      "require": "./dist/vite.cjs"
+    },
+    "./webpack": {
+      "types": "./webpack.d.ts",
+      "import": "./dist/webpack.js",
+      "require": "./dist/webpack.cjs"
+    }
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "vite build",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@types/node": "^25.3.2",
+    "@types/webpack": "^5.28.5",
     "typescript": "~5.9.3",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vitest": "^3.2.4",
+    "webpack": "^5.102.1"
   }
 }

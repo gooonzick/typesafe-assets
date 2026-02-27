@@ -1,6 +1,11 @@
-# vite-plugin-static-assets
+# typesafe-assets
 
-Zero-runtime compile-time validation and autocomplete for static asset paths in Vite projects.
+Zero-runtime compile-time validation and autocomplete for static asset paths.
+
+The package is split into adapter-specific entrypoints:
+
+- `typesafe-assets/vite`
+- `typesafe-assets/webpack`
 
 ## Problem
 
@@ -8,7 +13,7 @@ Static assets served from `public/` are referenced by string paths. Rename a fil
 
 ## Solution
 
-This plugin scans your asset directories and generates TypeScript modules with:
+This tool scans your asset directories and generates TypeScript modules with:
 
 - A **union type** of all valid asset paths
 - An **identity function** `asset()` that validates paths at compile time
@@ -17,28 +22,39 @@ Full IDE autocomplete, compile-time errors on invalid paths, **zero bytes added 
 
 ## Install
 
-```bash
-npm install -D vite-plugin-static-assets
-```
+Install with your package manager and use the adapter import that matches your bundler.
 
 ## Quick start
 
+Vite:
+
 ```ts
-// vite.config.ts
 import { defineConfig } from "vite";
-import staticAssets from "vite-plugin-static-assets";
+import staticAssets from "typesafe-assets/vite";
 
 export default defineConfig({
   plugins: [staticAssets()],
 });
 ```
 
+Webpack:
+
 ```ts
-// In your code
+import { defineConfig } from "webpack";
+import staticAssetsWebpack from "typesafe-assets/webpack";
+
+export default {
+  plugins: [staticAssetsWebpack()],
+};
+```
+
+In your app code (same for any adapter):
+
+```ts
 import { asset } from "./generated/public.gen";
 
-const hero = asset("/images/hero.png"); // ✅ autocomplete + validated
-const bad = asset("/images/oops.png"); // ❌ TypeScript error
+const hero = asset("/images/hero.png"); // valid path
+const bad = asset("/images/oops.png"); // TypeScript error
 ```
 
 ## Multiple directories
@@ -120,7 +136,21 @@ staticAssets({
 
 ## Watch mode
 
-In dev mode the plugin watches all configured directories. Adding, removing, or renaming files triggers instant regeneration. Content hashing ensures the file is only rewritten when paths actually change — no unnecessary HMR.
+Both adapters regenerate on asset changes in watch/dev mode. Content hashing ensures generated files are only rewritten when content actually changes.
+
+## Migration from Vite-only plugin
+
+Replace:
+
+```ts
+import staticAssets from "vite-plugin-static-assets";
+```
+
+with:
+
+```ts
+import staticAssets from "typesafe-assets/vite";
+```
 
 ## License
 
