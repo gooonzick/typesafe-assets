@@ -4,6 +4,7 @@ Zero-runtime compile-time validation and autocomplete for static asset paths.
 
 The package is split into adapter-specific entrypoints:
 
+- `typesafe-assets/eslint`
 - `typesafe-assets/vite`
 - `typesafe-assets/webpack`
 
@@ -137,6 +138,98 @@ staticAssets({
 ## Watch mode
 
 Both adapters regenerate on asset changes in watch/dev mode. Content hashing ensures generated files are only rewritten when content actually changes.
+
+## ESLint plugin
+
+Use the ESLint plugin to prevent raw asset strings and require generated helpers from `*.gen` files.
+
+### Install parser dependencies
+
+If your project uses framework templates, also install the matching parser:
+
+- Vue: `vue-eslint-parser`
+- Svelte: `svelte-eslint-parser`
+- JSX/Solid: `@typescript-eslint/parser` (or your JSX parser)
+
+### React or Solid (JSX)
+
+```js
+import typesafeAssets from "typesafe-assets/eslint";
+import tsParser from "@typescript-eslint/parser";
+
+export default [
+  {
+    files: ["**/*.{ts,tsx,js,jsx}"],
+    languageOptions: {
+      parser: tsParser,
+    },
+    plugins: {
+      "typesafe-assets": typesafeAssets,
+    },
+    rules: {
+      "typesafe-assets/prefer-generated-asset-helper": "error",
+    },
+  },
+];
+```
+
+### Vue
+
+```js
+import typesafeAssets from "typesafe-assets/eslint";
+import vueParser from "vue-eslint-parser";
+import tsParser from "@typescript-eslint/parser";
+
+export default [
+  {
+    files: ["**/*.vue"],
+    languageOptions: {
+      parser: vueParser,
+      parserOptions: {
+        parser: tsParser,
+      },
+    },
+    plugins: {
+      "typesafe-assets": typesafeAssets,
+    },
+    rules: {
+      "typesafe-assets/prefer-generated-asset-helper": "error",
+    },
+  },
+];
+```
+
+### Svelte
+
+```js
+import typesafeAssets from "typesafe-assets/eslint";
+import svelteParser from "svelte-eslint-parser";
+import tsParser from "@typescript-eslint/parser";
+
+export default [
+  {
+    files: ["**/*.svelte"],
+    languageOptions: {
+      parser: svelteParser,
+      parserOptions: {
+        parser: tsParser,
+      },
+    },
+    plugins: {
+      "typesafe-assets": typesafeAssets,
+    },
+    rules: {
+      "typesafe-assets/prefer-generated-asset-helper": "error",
+    },
+  },
+];
+```
+
+### What it enforces
+
+- Flags `src` and `srcSet` raw literals like `"/images/hero.png"`
+- Accepts helper calls when the helper is imported from a generated `*.gen` module
+- Works for JSX, Vue templates, and Svelte templates
 
 ## Migration from Vite-only plugin
 

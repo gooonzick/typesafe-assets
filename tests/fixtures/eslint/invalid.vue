@@ -1,0 +1,3 @@
+<template>
+  <img src="/images/hero.png" alt="hero" />
+</template>
