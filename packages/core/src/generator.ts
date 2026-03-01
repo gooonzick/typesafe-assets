@@ -112,10 +112,20 @@ export function createGenerator(
         }
     }
 
+    const pathsCache = new Map<string, string>();
+
     const generateForDir = (entry: ResolvedDir): boolean => {
         const paths = collectPaths(entry.absPath, entry.absPath, entry.prefix, extensions, exclude);
+        const cacheKey = paths.join("\n");
+
+        if (pathsCache.get(entry.absPath) === cacheKey) {
+            return false;
+        }
+
         const content = generateModule(paths, entry.relPath, typeName, fnName);
-        return writeIfChanged(entry, content);
+        const changed = writeIfChanged(entry, content);
+        pathsCache.set(entry.absPath, cacheKey);
+        return changed;
     };
 
     return {

@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, unlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
@@ -63,5 +63,60 @@ describe("core generator", () => {
         const changed = generator.generateForPath(join(publicDir, "images", "logo.svg"));
 
         expect(changed).toBe("src/generated/public.gen.ts");
+    });
+
+    it("skips generation when file list has not changed", () => {
+        const publicDir = join(rootDir, "public");
+        mkdirSync(publicDir, { recursive: true });
+        writeFileSync(join(publicDir, "logo.png"), "logo");
+
+        const generator = createGenerator(
+            { dirs: ["public"], outDir: "src/generated" },
+            { root: rootDir },
+        );
+
+        const first = generator.generateAll();
+        expect(first).toEqual(["src/generated/public.gen.ts"]);
+
+        const second = generator.generateAll();
+        expect(second).toEqual([]);
+    });
+
+    it("regenerates after a file is added then skips again", () => {
+        const publicDir = join(rootDir, "public");
+        mkdirSync(publicDir, { recursive: true });
+        writeFileSync(join(publicDir, "a.png"), "a");
+
+        const generator = createGenerator(
+            { dirs: ["public"], outDir: "src/generated" },
+            { root: rootDir },
+        );
+
+        generator.generateAll();
+
+        writeFileSync(join(publicDir, "b.png"), "b");
+        const afterAdd = generator.generateAll();
+        expect(afterAdd).toEqual(["src/generated/public.gen.ts"]);
+
+        const afterNoChange = generator.generateAll();
+        expect(afterNoChange).toEqual([]);
+    });
+
+    it("regenerates after a file is removed", () => {
+        const publicDir = join(rootDir, "public");
+        mkdirSync(publicDir, { recursive: true });
+        writeFileSync(join(publicDir, "a.png"), "a");
+        writeFileSync(join(publicDir, "b.png"), "b");
+
+        const generator = createGenerator(
+            { dirs: ["public"], outDir: "src/generated" },
+            { root: rootDir },
+        );
+
+        generator.generateAll();
+
+        unlinkSync(join(publicDir, "b.png"));
+        const afterRemove = generator.generateAll();
+        expect(afterRemove).toEqual(["src/generated/public.gen.ts"]);
     });
 });

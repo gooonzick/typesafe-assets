@@ -1,35 +1,17 @@
 import { createGenerator } from "@typesafe-assets/core";
 import type { StaticAssetsGenerator, StaticAssetsOptions } from "@typesafe-assets/core";
+import type { Plugin } from "vite";
 
-type WatchEvent = "add" | "unlink" | "unlinkDir";
-
-interface DevWatcher {
-    add(path: string): void;
-    on(event: WatchEvent, handler: (filePath: string) => void): void;
-}
-
-interface ViteLikeDevServer {
-    watcher: DevWatcher;
-}
-
-interface ViteLikePlugin {
-    name: string;
-    enforce?: "pre" | "post";
-    configResolved(config: { root: string }): void;
-    buildStart(): void;
-    configureServer(server: ViteLikeDevServer): void;
-}
-
-export default function staticAssets(options: StaticAssetsOptions = {}): ViteLikePlugin {
+export default function staticAssets(options: StaticAssetsOptions = {}) {
     let generator: StaticAssetsGenerator | undefined;
 
     // ─── Vite plugin hooks ───────────────────────────────────
 
     return {
         name: "vite-plugin-typesafe-assets",
-        enforce: "pre",
+        enforce: "pre" as const,
 
-        configResolved(config) {
+        configResolved(config: { root: string }) {
             generator = createGenerator(options, { root: config.root });
         },
 
@@ -41,7 +23,12 @@ export default function staticAssets(options: StaticAssetsOptions = {}): ViteLik
             }
         },
 
-        configureServer(server: ViteLikeDevServer) {
+        configureServer(server: {
+            watcher: {
+                add(path: string): void;
+                on(event: string, cb: (path: string) => void): void;
+            };
+        }) {
             if (!generator) return;
             const watcher = server.watcher;
 
@@ -62,6 +49,6 @@ export default function staticAssets(options: StaticAssetsOptions = {}): ViteLik
             watcher.on("unlink", handleChange);
             watcher.on("unlinkDir", handleChange);
         },
-    };
+    } satisfies Plugin;
 }
 
