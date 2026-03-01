@@ -1,10 +1,26 @@
-import type { Plugin, ViteDevServer } from "vite";
 import { createGenerator } from "../core";
 import type { StaticAssetsGenerator, StaticAssetsOptions } from "../core";
 
+type WatchEvent = "add" | "unlink" | "unlinkDir";
 
+interface DevWatcher {
+    add(path: string): void;
+    on(event: WatchEvent, handler: (filePath: string) => void): void;
+}
 
-export default function staticAssets(options: StaticAssetsOptions = {}): Plugin {
+interface ViteLikeDevServer {
+    watcher: DevWatcher;
+}
+
+interface ViteLikePlugin {
+    name: string;
+    enforce?: "pre" | "post";
+    configResolved(config: { root: string }): void;
+    buildStart(): void;
+    configureServer(server: ViteLikeDevServer): void;
+}
+
+export default function staticAssets(options: StaticAssetsOptions = {}): ViteLikePlugin {
     let generator: StaticAssetsGenerator | undefined;
 
     // ─── Vite plugin hooks ───────────────────────────────────
@@ -25,7 +41,7 @@ export default function staticAssets(options: StaticAssetsOptions = {}): Plugin 
             }
         },
 
-        configureServer(server: ViteDevServer) {
+        configureServer(server: ViteLikeDevServer) {
             if (!generator) return;
             const watcher = server.watcher;
 
