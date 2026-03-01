@@ -1,0 +1,1 @@
+export { normalizeDirs } from "@typesafe-assets/core";

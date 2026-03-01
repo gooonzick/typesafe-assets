@@ -1,11 +1,14 @@
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 import { ESLint } from "eslint";
 import { describe, expect, it } from "vitest";
-import plugin from "../lib/eslint/index";
+import plugin from "@typesafe-assets/eslint";
+
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const fixture = (name: string) =>
-    readFileSync(join(process.cwd(), "tests/fixtures/eslint", name), "utf8");
+    readFileSync(join(__dirname, "fixtures", name), "utf8");
 
 const ruleName = "typesafe-assets/prefer-generated-asset-helper";
 
@@ -40,7 +43,7 @@ async function runLint({
         overrideConfig: {
             files: ["**/*.{js,jsx,ts,tsx,vue,svelte}"],
             plugins: {
-                "typesafe-assets": plugin,
+                "typesafe-assets": plugin as never,
             },
             languageOptions: {
                 parser: resolvedParser as never,

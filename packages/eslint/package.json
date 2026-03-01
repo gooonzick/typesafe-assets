@@ -1,0 +1,36 @@
+{
+    "name": "@typesafe-assets/eslint",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "scripts": {
+        "build": "vite build",
+        "test": "vitest run",
+        "typecheck": "tsc --noEmit"
+    },
+    "peerDependencies": {
+        "eslint": ">=9"
+    },
+    "devDependencies": {
+        "@typescript-eslint/parser": "^8.56.1",
+        "jsdom": "^28.1.0",
+        "svelte": "^5.53.6",
+        "svelte-eslint-parser": "^1.5.1",
+        "vite": "^7.3.1",
+        "vite-plugin-dts": "^4.5.4",
+        "vitest": "^4.0.18",
+        "vue-eslint-parser": "^10.4.0"
+    }
+}

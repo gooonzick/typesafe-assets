@@ -1,1 +1,0 @@
-export type { DirEntry, ResolvedDir, StaticAssetsOptions } from "../core";

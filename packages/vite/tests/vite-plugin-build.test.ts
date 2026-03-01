@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { build } from "vite";
 import { describe, expect, it } from "vitest";
-import staticAssets from "../lib/vite/index";
+import staticAssets from "@typesafe-assets/vite";
 
 describe("vite plugin build integration", () => {
     it("generates helper module during vite build", async () => {

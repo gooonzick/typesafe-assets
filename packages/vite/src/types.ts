@@ -1,0 +1,1 @@
+export type { DirEntry, ResolvedDir, StaticAssetsOptions } from "@typesafe-assets/core";

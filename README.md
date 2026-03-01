@@ -8,6 +8,13 @@ The package is split into adapter-specific entrypoints:
 - `typesafe-assets/vite`
 - `typesafe-assets/webpack`
 
+Internal monorepo workspace packages:
+
+- `@typesafe-assets/core`
+- `@typesafe-assets/eslint`
+- `@typesafe-assets/vite`
+- `@typesafe-assets/webpack`
+
 ## Problem
 
 Static assets served from `public/` are referenced by string paths. Rename a file, make a typo — you find out at runtime (or your users do).

@@ -8,6 +8,13 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@typesafe-assets/core": ["packages/core/src/index.ts"],
+      "@typesafe-assets/vite": ["packages/vite/src/index.ts"],
+      "@typesafe-assets/webpack": ["packages/webpack/src/index.ts"],
+      "@typesafe-assets/eslint": ["packages/eslint/src/index.ts"]
+    },
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
@@ -20,5 +27,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["lib", "src", "tests"]
+  "include": ["packages", "src", "tests"],
+  "exclude": ["tests/fixtures/**", "packages/**/tests/fixtures/**"]
 }

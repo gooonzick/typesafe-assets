@@ -1,5 +1,5 @@
-import { createGenerator } from "../core";
-import type { StaticAssetsGenerator, StaticAssetsOptions } from "../core";
+import { createGenerator } from "@typesafe-assets/core";
+import type { StaticAssetsGenerator, StaticAssetsOptions } from "@typesafe-assets/core";
 
 type WatchEvent = "add" | "unlink" | "unlinkDir";
 
