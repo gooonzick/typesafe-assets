@@ -8,10 +8,13 @@
     "dev": "vite",
     "build": "turbo run build",
     "test": "turbo run test",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "changeset": "changeset",
+    "changeset:version": "changeset version"
   },
   "devDependencies": {
+    "@changesets/cli": "2.29.8",
     "turbo": "2.8.12",
-    "typescript": "~5.9.3"
+    "typescript": "5.9.3"
   }
 }
