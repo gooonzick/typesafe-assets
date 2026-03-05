@@ -1,0 +1,58 @@
+name: PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  changeset-required:
+    name: Require changeset for package changes
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure changeset exists when packages change
+        run: |
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+
+          CHANGED_FILES=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          if ! echo "$CHANGED_FILES" | grep -Eq '^(packages/|package.json|pnpm-lock.yaml|pnpm-workspace.yaml|turbo.json|tsconfig.json)'; then
+            echo "No package-impacting files changed; skipping changeset requirement."
+            exit 0
+          fi
+
+          if echo "$CHANGED_FILES" | grep -Eq '^\.changeset/.+\.md$'; then
+            echo "Changeset detected."
+            exit 0
+          fi
+
+          echo "Package-impacting changes require a changeset file in .changeset/*.md"
+          exit 1
+
+  validate-package-json:
+    name: Validate package.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate package.json files
+        run: |
+          for pkg in package.json packages/*/package.json; do
+            echo "Validating $pkg"
+            node -e "JSON.parse(require('node:fs').readFileSync('$pkg', 'utf8'))" || exit 1
+          done

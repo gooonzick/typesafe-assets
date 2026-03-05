@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+      - "@typesafe-assets/core@*"
+      - "@typesafe-assets/vite@*"
+      - "@typesafe-assets/webpack@*"
+      - "@typesafe-assets/eslint@*"
+
+jobs:
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Generate GitHub release from tag
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
