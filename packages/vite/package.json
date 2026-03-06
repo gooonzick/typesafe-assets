@@ -29,5 +29,10 @@
         "vite": "^7.3.1",
         "vite-plugin-dts": "^4.5.4",
         "vitest": "^4.0.18"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gooonzick/typesafe-assets",
+        "directory": "packages/vite"
     }
 }
