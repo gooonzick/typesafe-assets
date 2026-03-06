@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 export default defineConfig({
 	resolve: {
 		alias: {
-			"@typesafe-assets/core": fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+			"@gooonzick/typesafe-assets-core": fileURLToPath(new URL("./src/index.ts", import.meta.url)),
 		},
 	},
 	test: {

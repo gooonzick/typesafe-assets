@@ -1,11 +1,11 @@
-# @typesafe-assets/vite
+# @gooonzick/typesafe-assets-vite
 
 Vite plugin that generates type-safe static asset helpers from configured directories.
 
 ## Install
 
 ```bash
-pnpm add -D @typesafe-assets/vite
+pnpm add -D @gooonzick/typesafe-assets-vite
 ```
 
 Peer dependency:
@@ -16,7 +16,7 @@ Peer dependency:
 
 ```ts
 import { defineConfig } from "vite";
-import staticAssets from "@typesafe-assets/vite";
+import staticAssets from "@gooonzick/typesafe-assets-vite";
 
 export default defineConfig({
   plugins: [
@@ -38,7 +38,7 @@ const logo = asset("/images/logo.png");
 
 ## Options
 
-Accepts `StaticAssetsOptions` from `@typesafe-assets/core`:
+Accepts `StaticAssetsOptions` from `@gooonzick/typesafe-assets-core`:
 
 - `dirs?: Array<string | DirEntry>`
 - `outDir?: string`

@@ -1,5 +1,5 @@
 {
-    "name": "@typesafe-assets/vite",
+    "name": "@gooonzick/typesafe-assets-vite",
     "version": "1.0.0",
     "type": "module",
     "main": "./dist/index.js",
@@ -19,7 +19,7 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@typesafe-assets/core": "workspace:*"
+        "@gooonzick/typesafe-assets-core": "workspace:*"
     },
     "peerDependencies": {
         "vite": ">=5"

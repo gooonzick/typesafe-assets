@@ -10,10 +10,10 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@typesafe-assets/core": ["packages/core/src/index.ts"],
-      "@typesafe-assets/vite": ["packages/vite/src/index.ts"],
-      "@typesafe-assets/webpack": ["packages/webpack/src/index.ts"],
-      "@typesafe-assets/eslint": ["packages/eslint/src/index.ts"]
+      "@gooonzick/typesafe-assets-core": ["packages/core/src/index.ts"],
+      "@gooonzick/typesafe-assets-vite": ["packages/vite/src/index.ts"],
+      "@gooonzick/typesafe-assets-webpack": ["packages/webpack/src/index.ts"],
+      "@gooonzick/typesafe-assets-eslint": ["packages/eslint/src/index.ts"]
     },
     "allowImportingTsExtensions": true,
     "isolatedModules": true,

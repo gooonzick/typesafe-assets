@@ -4,10 +4,10 @@ Type-safe static asset paths with zero runtime cost.
 
 This repository is a monorepo with four workspace packages:
 
-- `@typesafe-assets/core`
-- `@typesafe-assets/vite`
-- `@typesafe-assets/webpack`
-- `@typesafe-assets/eslint`
+- `@gooonzick/typesafe-assets-core`
+- `@gooonzick/typesafe-assets-vite`
+- `@gooonzick/typesafe-assets-webpack`
+- `@gooonzick/typesafe-assets-eslint`
 
 ## Why this exists
 
@@ -59,7 +59,7 @@ Vite:
 
 ```ts
 import { defineConfig } from "vite";
-import staticAssets from "@typesafe-assets/vite";
+import staticAssets from "@gooonzick/typesafe-assets-vite";
 
 export default defineConfig({
   plugins: [staticAssets()],
@@ -69,7 +69,7 @@ export default defineConfig({
 Webpack:
 
 ```ts
-import staticAssetsWebpack from "@typesafe-assets/webpack";
+import staticAssetsWebpack from "@gooonzick/typesafe-assets-webpack";
 
 export default {
   plugins: [staticAssetsWebpack()],

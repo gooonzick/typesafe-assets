@@ -1,5 +1,5 @@
 {
-    "name": "@typesafe-assets/eslint",
+    "name": "@gooonzick/typesafe-assets-eslint",
     "version": "1.0.0",
     "type": "module",
     "main": "./dist/index.js",

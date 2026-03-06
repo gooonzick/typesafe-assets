@@ -1,5 +1,5 @@
 {
-    "name": "@typesafe-assets/webpack",
+    "name": "@gooonzick/typesafe-assets-webpack",
     "version": "1.0.0",
     "type": "module",
     "files": [
@@ -19,7 +19,7 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@typesafe-assets/core": "workspace:*"
+        "@gooonzick/typesafe-assets-core": "workspace:*"
     },
     "peerDependencies": {
         "webpack": ">=5"

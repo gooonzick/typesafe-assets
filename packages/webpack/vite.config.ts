@@ -17,7 +17,7 @@ export default defineConfig({
             fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
         },
         rollupOptions: {
-            external: ["@typesafe-assets/core", "webpack"],
+            external: ["@gooonzick/typesafe-assets-core", "webpack"],
             output: {
                 exports: "named",
             },

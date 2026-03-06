@@ -17,7 +17,7 @@ export default defineConfig({
             fileName: "index",
         },
         rollupOptions: {
-            external: ["@typesafe-assets/core", "vite"],
+            external: ["@gooonzick/typesafe-assets-core", "vite"],
         },
     },
 });

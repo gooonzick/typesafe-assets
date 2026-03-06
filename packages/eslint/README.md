@@ -1,11 +1,11 @@
-# @typesafe-assets/eslint
+# @gooonzick/typesafe-assets-eslint
 
 ESLint plugin that enforces generated asset helpers instead of raw static-asset strings.
 
 ## Install
 
 ```bash
-pnpm add -D @typesafe-assets/eslint eslint
+pnpm add -D @gooonzick/typesafe-assets-eslint eslint
 ```
 
 Peer dependency:
@@ -21,7 +21,7 @@ The rule reports direct asset strings in `src`/`srcSet` and allows helper calls 
 ## Flat config usage
 
 ```js
-import typesafeAssets from "@typesafe-assets/eslint";
+import typesafeAssets from "@gooonzick/typesafe-assets-eslint";
 import tsParser from "@typescript-eslint/parser";
 
 export default [
@@ -43,7 +43,7 @@ export default [
 Or use the bundled config:
 
 ```js
-import typesafeAssets from "@typesafe-assets/eslint";
+import typesafeAssets from "@gooonzick/typesafe-assets-eslint";
 
 export default [...typesafeAssets.configs.recommended];
 ```

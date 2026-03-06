@@ -54,4 +54,4 @@ jobs:
       - name: Publish via pnpm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm -r --filter=!@typesafe-assets/core publish --access public --no-git-checks --tag ${{ github.event.inputs.tag || 'latest' }}
+        run: pnpm -r --filter=!@gooonzick/typesafe-assets-core publish --access public --no-git-checks --tag ${{ github.event.inputs.tag || 'latest' }}

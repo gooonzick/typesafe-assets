@@ -1,4 +1,4 @@
-# @typesafe-assets/vite
+# @gooonzick/typesafe-assets-vite
 
 ## 1.0.0
 
@@ -9,4 +9,4 @@
 ### Patch Changes
 
 - Updated dependencies [7a75832]
-  - @typesafe-assets/core@1.0.0
+  - @gooonzick/typesafe-assets-core@1.0.0

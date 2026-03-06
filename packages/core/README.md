@@ -1,8 +1,8 @@
-# @typesafe-assets/core
+# @gooonzick/typesafe-assets-core
 
 Core generator used by bundler adapters.
 
-`@typesafe-assets/core` scans configured static-asset directories and writes generated TypeScript modules (for example `public.gen.ts`) containing:
+`@gooonzick/typesafe-assets-core` scans configured static-asset directories and writes generated TypeScript modules (for example `public.gen.ts`) containing:
 
 - A path union type (default: `AssetPath`)
 - A typed helper function (default: `asset`)
@@ -14,7 +14,7 @@ Core generator used by bundler adapters.
 Creates a generator instance.
 
 ```ts
-import { createGenerator } from "@typesafe-assets/core";
+import { createGenerator } from "@gooonzick/typesafe-assets-core";
 
 const generator = createGenerator(
   {

@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ESLint } from "eslint";
 import { describe, expect, it } from "vitest";
-import plugin from "@typesafe-assets/eslint";
+import plugin from "@gooonzick/typesafe-assets-eslint";
 
 const fixture = (name: string) =>
     readFileSync(join(process.cwd(), "tests", "fixtures", name), "utf8");
