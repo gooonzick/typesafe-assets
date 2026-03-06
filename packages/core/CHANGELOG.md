@@ -1,4 +1,4 @@
-# @typesafe-assets/core
+# @gooonzick/typesafe-assets-core
 
 ## 1.0.0
 

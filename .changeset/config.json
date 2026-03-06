@@ -9,10 +9,10 @@
     "commit": false,
     "fixed": [
         [
-            "@typesafe-assets/core",
-            "@typesafe-assets/vite",
-            "@typesafe-assets/eslint",
-            "@typesafe-assets/webpack"
+            "@gooonzick/typesafe-assets-core",
+            "@gooonzick/typesafe-assets-vite",
+            "@gooonzick/typesafe-assets-eslint",
+            "@gooonzick/typesafe-assets-webpack"
         ]
     ],
     "linked": [],

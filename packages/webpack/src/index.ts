@@ -1,6 +1,6 @@
 import type { Compiler } from "webpack";
-import { createGenerator } from "@typesafe-assets/core";
-import type { StaticAssetsGenerator, StaticAssetsOptions } from "@typesafe-assets/core";
+import { createGenerator } from "@gooonzick/typesafe-assets-core";
+import type { StaticAssetsGenerator, StaticAssetsOptions } from "@gooonzick/typesafe-assets-core";
 
 const PLUGIN_NAME = "TypesafeAssetsWebpackPlugin";
 
@@ -53,4 +53,4 @@ export default function staticAssetsWebpack(
     return new TypesafeAssetsWebpackPlugin(options);
 }
 
-export type { DirEntry, StaticAssetsOptions } from "@typesafe-assets/core";
+export type { DirEntry, StaticAssetsOptions } from "@gooonzick/typesafe-assets-core";

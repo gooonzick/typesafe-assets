@@ -1,5 +1,5 @@
 {
-    "name": "@typesafe-assets/vite",
+    "name": "@gooonzick/typesafe-assets-vite",
     "version": "1.0.0",
     "type": "module",
     "main": "./dist/index.js",
@@ -19,7 +19,7 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@typesafe-assets/core": "workspace:*"
+        "@gooonzick/typesafe-assets-core": "workspace:*"
     },
     "peerDependencies": {
         "vite": ">=5"
@@ -29,5 +29,10 @@
         "vite": "^7.3.1",
         "vite-plugin-dts": "^4.5.4",
         "vitest": "^4.0.18"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gooonzick/typesafe-assets",
+        "directory": "packages/vite"
     }
 }

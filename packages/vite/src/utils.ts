@@ -1,1 +1,1 @@
-export { normalizeDirs } from "@typesafe-assets/core";
+export { normalizeDirs } from "@gooonzick/typesafe-assets-core";

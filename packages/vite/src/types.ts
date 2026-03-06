@@ -1,1 +1,1 @@
-export type { DirEntry, ResolvedDir, StaticAssetsOptions } from "@typesafe-assets/core";
+export type { DirEntry, ResolvedDir, StaticAssetsOptions } from "@gooonzick/typesafe-assets-core";

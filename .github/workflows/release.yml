@@ -4,10 +4,10 @@ on:
   push:
     tags:
       - "v*.*.*"
-      - "@typesafe-assets/core@*"
-      - "@typesafe-assets/vite@*"
-      - "@typesafe-assets/webpack@*"
-      - "@typesafe-assets/eslint@*"
+      - "@gooonzick/typesafe-assets-core@*"
+      - "@gooonzick/typesafe-assets-vite@*"
+      - "@gooonzick/typesafe-assets-webpack@*"
+      - "@gooonzick/typesafe-assets-eslint@*"
 
 jobs:
   create-release:

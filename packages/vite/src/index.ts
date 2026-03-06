@@ -1,5 +1,5 @@
-import { createGenerator } from "@typesafe-assets/core";
-import type { StaticAssetsGenerator, StaticAssetsOptions } from "@typesafe-assets/core";
+import { createGenerator } from "@gooonzick/typesafe-assets-core";
+import type { StaticAssetsGenerator, StaticAssetsOptions } from "@gooonzick/typesafe-assets-core";
 import type { Plugin } from "vite";
 
 export default function staticAssets(options: StaticAssetsOptions = {}) {

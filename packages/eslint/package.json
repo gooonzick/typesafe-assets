@@ -1,5 +1,5 @@
 {
-    "name": "@typesafe-assets/eslint",
+    "name": "@gooonzick/typesafe-assets-eslint",
     "version": "1.0.0",
     "type": "module",
     "main": "./dist/index.js",
@@ -31,5 +31,10 @@
         "vite-plugin-dts": "^4.5.4",
         "vitest": "^4.0.18",
         "vue-eslint-parser": "^10.4.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gooonzick/typesafe-assets",
+        "directory": "packages/eslint"
     }
 }

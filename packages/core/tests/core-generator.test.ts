@@ -2,8 +2,8 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, unlinkSync } from 
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
-import { createGenerator } from "@typesafe-assets/core";
-import type { StaticAssetsOptions } from "@typesafe-assets/core";
+import { createGenerator } from "@gooonzick/typesafe-assets-core";
+import type { StaticAssetsOptions } from "@gooonzick/typesafe-assets-core";
 
 describe("core generator", () => {
     let rootDir: string;

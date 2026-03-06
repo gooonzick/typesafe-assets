@@ -1,4 +1,4 @@
-# @typesafe-assets/eslint
+# @gooonzick/typesafe-assets-eslint
 
 ## 1.0.0
 

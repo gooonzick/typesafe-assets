@@ -1,5 +1,5 @@
 {
-    "name": "@typesafe-assets/webpack",
+    "name": "@gooonzick/typesafe-assets-webpack",
     "version": "1.0.0",
     "type": "module",
     "files": [
@@ -19,7 +19,7 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@typesafe-assets/core": "workspace:*"
+        "@gooonzick/typesafe-assets-core": "workspace:*"
     },
     "peerDependencies": {
         "webpack": ">=5"
@@ -28,5 +28,10 @@
         "@types/node": "^25.3.3",
         "vite": "^7.3.1",
         "vite-plugin-dts": "^4.5.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gooonzick/typesafe-assets",
+        "directory": "packages/webpack"
     }
 }

@@ -1,11 +1,11 @@
-# @typesafe-assets/webpack
+# @gooonzick/typesafe-assets-webpack
 
 Webpack plugin that generates type-safe static asset helpers from configured directories.
 
 ## Install
 
 ```bash
-pnpm add -D @typesafe-assets/webpack
+pnpm add -D @gooonzick/typesafe-assets-webpack
 ```
 
 Peer dependency:
@@ -15,7 +15,7 @@ Peer dependency:
 ## Usage
 
 ```ts
-import staticAssetsWebpack from "@typesafe-assets/webpack";
+import staticAssetsWebpack from "@gooonzick/typesafe-assets-webpack";
 
 export default {
   plugins: [
@@ -30,7 +30,7 @@ export default {
 Class form is also exported:
 
 ```ts
-import { TypesafeAssetsWebpackPlugin } from "@typesafe-assets/webpack";
+import { TypesafeAssetsWebpackPlugin } from "@gooonzick/typesafe-assets-webpack";
 
 export default {
   plugins: [new TypesafeAssetsWebpackPlugin()],
@@ -39,7 +39,7 @@ export default {
 
 ## Options
 
-Accepts `StaticAssetsOptions` from `@typesafe-assets/core`:
+Accepts `StaticAssetsOptions` from `@gooonzick/typesafe-assets-core`:
 
 - `dirs?: Array<string | DirEntry>`
 - `outDir?: string`
